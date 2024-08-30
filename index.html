@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .errormsg{
+            color: red;
+            position: relative;
+            left: 20px;
+          display: none;
+            
+        }
+        input{
+            width: 200px;
+        }
+        #span1{
+            color: red;
+            position: relative;
+            left: 20px;
+            display: none;
+           
+        }
+        .container{
+            display: flex;
+            justify-content: center;
+        }
+        .button{
+            display: flex;
+            justify-content: space-around;
+            position: relative;
+            bottom: 30px;
+            left: 140px;
+        }
+        table{
+            height: 200px;
+            background-color: azure;
+            width: 800px;
+            padding: 40px;
+            line-height: 40px;
+        }
+        
+    
+        
+        
+       
+        
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <table>
+            <tr>
+                <td>First Name</td>
+                <td>:</td>
+                <td><input type="text" id="First_Name"><span class="errormsg" id="First_Name_error" required>Inavild first name</span></td>
+            </tr>
+                <tr>
+                    <td>Last Name</td>
+                    <td>:</td>
+                <td><input type="text" id="Last_Name"><span class="errormsg" id="Last_Name_error" required>Inavild last name</span></td>
+            </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>:</td>
+                <td><input type="email" id="Email"><span class="errormsg" id="Email_error" required>Inavild email</span></td>
+            </tr>
+                <tr>
+                    <td>Confirm Email</td>
+                    <td>:</td>
+                <td><input type="email" id="Confirm_Email"><span class="errormsg" id="Confirm_Email_error" required>Inavild confirm email</span></td>
+            </tr>
+                <tr>
+                    <td>Contact</td>
+                    <td>:</td>
+                <td><input type="text" id="Contact"><span class="errormsg" id="Contact_error" required>Inavild contact</span></td>
+            </tr>
+                <tr>
+                    <td>Password</td>
+                    <td>:</td>
+                <td><input type="password" id="Password"><span class="errormsg" id="Password_error" required>Inavild password</span></td>
+            </tr>
+            <tr>
+                    <td>Confirm Password</td>
+                    <td>:</td>
+                <td><input type="password" id="Confirm_Password"><span class="errormsg" id="Confirm_Password_error" required>Inavild confirm password</span></td>
+
+            </tr>
+
+            <tr>
+                <td>
+                   
+                </td>
+                <td></td>
+                <td><button id="form_valid_submit" onclick="validsubmit()"> submit</button></td>
+            </tr>
+        </table>
+
+       
+    </div>
+   
+    
+   
+    
+
+
+    <script>
+
+       function validsubmit(){
+
+        event.preventDefault()
+
+
+        const First_Name_regex=/^[a-zA-Z\s-]+$/;
+        const Last_Name_reg=/^[a-zA-Z\s-]+$/;
+        const Email_reg=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        
+        const Contact_reg=/^[0-9]/
+        const Password_reg=/^^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/
+        
+        
+
+        
+        const First_Name=document.getElementById('First_Name')
+        const Last_Name=document.getElementById('Last_Name')
+        const Email=document.getElementById('Email').value
+        const Confirm_Email=document.getElementById('Confirm_Email').value
+        const Contact=document.getElementById('Contact')
+        const Password=document.getElementById('Password').value
+        const Confirm_Password=document.getElementById('Confirm_Password').value
+
+        if(First_Name_regex.test(First_Name.value)==true){
+            document.querySelector('#First_Name_error').style.display='none'
+        }
+        else{
+            document.querySelector('#First_Name_error').style.display='inline'
+        }
+        if(Last_Name_reg.test(Last_Name.value)==true){
+            document.querySelector('#Last_Name_error').style.display='none'
+        }
+        else{
+            document.querySelector('#Last_Name_error').style.display='inline'
+        }
+
+
+
+        // Check if confirmation email matches
+        if(!Email_reg.test(Email)) {
+                alert('Please enter a valid email address.');
+        }
+        else if (Email !== Confirm_Email) {
+            document.querySelector('#Confirm_Email_error').style.display='inline'
+        }
+        else{
+            alert('Email validated successfully.');
+        }
+
+
+        
+        if(Contact_reg.test(Contact.value)==true){
+            document.querySelector('#Contact_error').style.display='none'
+        }
+        else{
+            document.querySelector('#Contact_error').style.display='inline'
+        }
+
+
+
+         // Check if confirmation password matches
+         if(!Password_reg.test(Password)) {
+                alert('Please enter a valid password address.');
+        }
+        else if (Password !== Confirm_Password) {
+            document.querySelector('#Confirm_Password_error').style.display='inline'
+        }
+        
+        else{
+            alert('password validated successfully.');
+        }
+
+
+
+
+
+ 
+        }
+
+
+
+      
+        
+
+      
+
+
+       
+
+    </script>
+    
+</body>
+</html>
